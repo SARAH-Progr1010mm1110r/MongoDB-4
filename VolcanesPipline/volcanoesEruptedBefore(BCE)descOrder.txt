@@ -1,0 +1,22 @@
+[{
+ $match: {
+  Last_Eruption: {
+   $regex: 'BCE'
+  }
+ }
+}, {
+ $project: {
+  _id: 0,
+  Volcano_Name: 1,
+  Country: 1,
+  Lat: 1,
+  Lon: 1,
+ elevation_feet:1
+ }
+}, {
+ $sort: {
+  elevation_feet: -1
+ }
+}, {
+ $out: 'volcanoesEruptedBefore(BCE)descOrder'
+}]

@@ -1,0 +1,23 @@
+[{
+ $project: {
+  _id: 0,
+  Volcano_Type: 1,
+  Country: 1,
+  population_within_10km: 1
+ }
+}, {
+ $match: {
+  population_within_10km: {
+   $gt: 100000
+  }
+ }
+}, {
+ $group: {
+  _id: {
+   vCountry: '$Country',
+   vType: '$Volcano_Type'
+  }
+ }
+}, {
+ $out: 'VolcanoesCountryandTypePopin10km'
+}]

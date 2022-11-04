@@ -1,0 +1,13 @@
+[{
+ $group: {
+  _id: '$Volcano_Type',
+  minElevation: {
+   $min: '$elevation_feet'
+  },
+  maxElevation: {
+   $max: '$elevation_feet'
+  }
+ }
+}, {
+ $out: 'min&maxVolcanoesElevation'
+}]
